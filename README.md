@@ -31,3 +31,5 @@ This repository is the source code for a program that queries a database provide
 2. Run command ```vagrant ssh``` from vagrant folder inside the cloned repository.
 3. Move to /vagrant in virtual machine.
 4. Run ```python3 databaseanalyzerui.py```.
+5. Follow instructions that appear in terminal.
+
