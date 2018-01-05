@@ -24,7 +24,7 @@ def print_fail_percentage(results):
 
 instructions = "Press 1 to view the 3 most popular articles of all time.\n" \
                "Press 2 to view the most popular authors of all time.\n" \
-               "Press 3 to view days where more than 1% of requests failed." \
+               "Press 3 to view days where more than 1% of requests failed.\n" \
                "Press 0 to exit program.\n" \
                "\n" \
                "Press enter after option selected.\n"
