@@ -24,9 +24,7 @@ This repository is the source code for a program that queries a database provide
 
 ```create view top_authors as select authors.name, views from authors join (select articles.author, count(log.path) as views from log join articles on (log.path like '%' || articles.slug) where log.status like '2%' group by articles.author order by views desc) as author_id_view_count on authors.id = author_id_view_count.author;```
 
-```create view failed_requests as select date(log.time), cast(count(log.path) as numeric) as requests from log where log.status not like '2%' group by date(log.time);```
-
-```create view total_requests as select date(log.time), cast(count(log.path) as numeric) as requests from log group by date(log.time);```
+```create view more_one_percent_requests_failed as select failed_requests.date, round((failed_requests.requests/total_requests.requests)*100,2) as percentage from (select date(log.time), cast(count(log.path) as numeric) as requests from log where log.status not like '2%' group by date(log.time)) as failed_requests join (select date(log.time), cast(count(log.path) as numeric) as requests from log group by date(log.time)) as total_requests on (failed_requests.date = total_requests.date) where (failed_requests.requests/total_requests.requests)*100 > 1;```
 
 ## Usage
 1. Using terminal, move to directory called vagrant found in the cloned repository.
