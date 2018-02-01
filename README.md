@@ -20,7 +20,7 @@ This repository is the source code for a program that queries a database provide
 4. Run command ```psql news```.
 1. Run the following commands:
 
-```create view author_id_view_count as select articles.author, count(log.path) as views from log, articles where log.path like '%' || articles.slug and log.status like '2%' group by articles.author order by views desc;```
+```create view top_authors as select authors.name, views from authors join (select articles.author, count(log.path) as views from log join articles on (log.path like '%' || articles.slug) where log.status like '2%' group by articles.author order by views desc) as author_id_view_count on authors.id = author_id_view_count.author;```
 
 ```create view failed_requests as select date(log.time), cast(count(log.path) as numeric) as requests from log where log.status not like '2%' group by date(log.time);```
 
