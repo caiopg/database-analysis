@@ -13,7 +13,7 @@ This repository is the source code for a program that queries a database provide
 9. Move to /vagrant in virtual machine.
 10. Run command ```psql -d news -f newsdata.sql``` in /vagrant.
 
-## Creating necessay views in database
+## Creating necessary views in database
 1. Using terminal, move to directory called vagrant found in the cloned repository.
 2. Run command ```vagrant ssh``` from vagrant folder inside the cloned repository.
 3. Move to /vagrant in virtual machine.
